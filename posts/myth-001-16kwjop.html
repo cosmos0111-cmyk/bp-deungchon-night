@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>등촌동 유흥 정보에 관한 흔한 오해, 직접 확인해보니 달랐던 점</title>
+  <link rel="canonical" href="https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/myth-001-16kwjop.html">
+  <style>
+    body { font-family: sans-serif; line-height: 1.8; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
+    h1 { font-family: serif; color: #111; margin-bottom: 0.5em; }
+    h2 { font-size: 1.4em; margin: 1.5em 0 0.5em; color: #222; }
+    h3 { font-size: 1.15em; margin: 1.2em 0 0.4em; color: #444; }
+    p { margin: 0 0 1em; }
+    a { color: #3182ce; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">← 목록으로 돌아가기</a>
+  </header>
+  <main>
+    <h1>등촌동 유흥 정보에 관한 흔한 오해, 직접 확인해보니 달랐던 점</h1>
+    <article>
+      <p>아, 진짜... 프로덕션 배포 후 3개월 만에 발견된 silent regression 디버깅을 시작하면, 그 첫 걸음은 엄청난 감정의 기복이었습니다. ML 엔지니어로서는 처음 경험한 고민으로, 프로젝트 진행 중 절대 놓치면 안 될 중요한 정보가 있었는데도 불구하고, 이건 단순히 버그일 거라는 확신에 포기할 생각까지 했습니다.</p>
+<p>### 문제 발생 배경<br>LLM 미세 동작의 버그와 Llama 모델의 attention sink 토큰이 양자화 기법(Q4/Q8 차이)로 잘려나가면서, 특정 히든 디멘션이 제대로 작동하지 않는 문제가 발견되었습니다. 이는 프로덕션 배포 후 3개월 만에 발생한 silent regression 현상으로, 업데이트된 버전과 모델 버전을 사용하며 예외 코드를 살펴봐도 원인이 불분명했습니다.</p>
+<p>### 조건과 실패 원인<br>#### 실패 원인 검토: 오류코드와 버전 확인<br>오류코드는 다음과 같습니다: `ModelOutputError(cause='Invalid attention token in Q4/Q8 split', msg="Unexpected error in hidden dimension processing.")`. 이를 통해 알 수 있는 주요 정보들은:<br>1. **버전 문제**: 업데이트된 모델 버전이 원래 버전보다 더 큰 것으로 보입니다.<br>2. **hidden dimension의 처리 문제**: 양자화 기법에 의해 잘려나간 히든 디멘션으로 인해 attention token이 정상 작동하지 않는 것으로 보입니다.</p>
+<p>#### 실패 원인 검토: 데이터와 설정 확인<br>데이터셋과 모델 설정도 다음과 같이 조사되었습니다:<br>1. **데이터셋**: 양자화된 데이터셋에서 히든 디멘션 처리 부분을 직접 수정했었으나, 결과는 기대치를 이기지 못했습니다.<br>2. **모델 설정**: 양자화 된 모델에 대해 고려해야 할 설정들을 조사한 후, 그 중에서도 `attention_scale`와 `qk_scale` 등의 값들이 문제였음을 발견하였습니다.</p>
+<p>#### 실패 원인 검토: 오류 코드 해석<br>오류 코드의 메시지가 알려주는 정보를 통해 얻은 중요한 사실들은:<br>1. **Q4/Q8 분할**: 양자화 기법(Q4/Q8)을 사용하여 히든 디멘션 분리가 이루어졌습니다. 이 과정에서 attention token이 잘려나가는 문제가 발생하였습니다.<br>2. **hidden dimension의 처리 문제**: 양자화된 데이터셋에서 히든 디멘션이 제대로 작동하지 않는 것으로 보입니다.</p>
+<p>### 비교 기준과 절차<br>#### 실패 원인 비교: Q4/Q8와 정상 시의 차이점<br>Q4/Q8 분할 과정에 따른 양자화된 데이터셋에서 히든 디멘션 분리가 이루어졌습니다. 이 과정에서 attention token이 잘려나가는 문제가 발생하였습니다. 반대로, 정상 시에는 모든 히든 디멘션이 제대로 작동하며, 해당 예외가 일어날 경우에도 예외 코드를 살펴보면 해결할 수 있습니다.</p>
+<p>#### 절차 비교: 실패 원인 조사<br>1. **데이터셋 분석**: 양자화된 데이터셋에서 히든 디멘션 처리 부분을 직접 수정했었으나, 결과는 기대치를 이기지 못했습니다.<br>2. **모델 설정 확인**: 양자화 된 모델에 대해 고려해야 할 설정들을 조사한 후, 그 중에서도 `attention_scale`와 `qk_scale` 등의 값들이 문제가 되었습니다.</p>
+<p>### 해결 방향<br>#### 해결 방향: 오류 코드 수정 및 데이터셋 정상화<br>오류 코드는 다음과 같이 수정되었습니다:<br>```python<br>def process_hidden_dimension(self):<br>    # 양자화된 데이터셋에서 히든 디멘션 분리<br>    if self.model.qk_scale == 1.0 and self.model.attention_scale == 1.0:<br>        return super().process_hidden_dimension()<br>    else:<br>        raise ModelOutputError(<br>            cause='Invalid attention token in Q4/Q8 split',<br>            msg="Unexpected error in hidden dimension processing."<br>        )<br>```<br>데이터셋은 다음과 같이 수정되었습니다:<br>```python<br>def process_hidden_dimension(self):<br>    # 양자화된 데이터셋에서 히든 디멘션 분리<br>    if self.model.qk_scale != 1.0 or self.model.attention_scale != 1.0:<br>        raise ModelOutputError(<br>            cause='Invalid attention token in Q4/Q8 split',<br>            msg="Unexpected error in hidden dimension processing."<br>        )<br>```<br>### 결론과 기준표<br>이 문제를 해결하기 위해, 양자화된 데이터셋에서 히든 디멘션 분리 과정을 수정하였으며, 이를 통해 문제가 일어날 때 예외 코드를 처리할 수 있게 하였습니다. 이로써 원본 버전의 동작을 재현할 수 있게 되었고, 이후 프로젝트 진행 중에도 이러한 문제 발생을 방지하기 위한 예외 처리 코드가 추가되었습니다.</p>
+<p>#### 기준표: 자신의 상황으로 대입 가능<br>다른 ML 엔지니어들이 양자화된 데이터셋에서 히든 디멘션 분리 과정을 수정할 때 참고할 수 있는 다음과 같은 기준표를 제시합니다:<br>- **데이터셋 분석**: 양자화된 데이터셋에서 히든 디멘션 처리 부분을 직접 수정하였으나</p>
+
+    <div class="juice-ref-eccyam" style="margin-top:2.5rem;padding:1rem 0;border-top:1px dashed #ccc;font-size:0.9rem;color:#666;">
+      <p style="font-weight:600;margin-bottom:0.5rem;">함께 보면 좋은 정보</p>
+      <ul style="list-style:none;padding:0;margin:0;">
+      <li>심층 정보와 실제 데이터는 <a href="https://water-server.store/">tokyo-water</a>를 참고하세요.</li>
+      <li>자세한 기술 명세 가이드는 <a href="https://support.google.com/" rel="noopener noreferrer" target="_blank">공식 가이드 커뮤니티</a>를 참고하십시오.</li>
+      </ul>
+    </div>
+    </article>
+  </main>
+</body>
+</html>

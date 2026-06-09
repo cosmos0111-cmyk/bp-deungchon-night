@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llama 3.1 8B? 5000만 RoPE theta, 벤치마크는 뻥카다. 등촌동 유흥 정보랑 뭐가 달라?</title>
+  <link rel="canonical" href="https://deungchon-night.pages.dev/posts/review-002.html">
+  <style>
+    body { font-family: sans-serif; line-height: 1.8; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
+    h1 { font-family: serif; color: #111; margin-bottom: 0.5em; }
+    h2 { font-size: 1.4em; margin: 1.5em 0 0.5em; color: #222; }
+    h3 { font-size: 1.15em; margin: 1.2em 0 0.4em; color: #444; }
+    p { margin: 0 0 1em; }
+    a { color: #3182ce; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">← 목록으로 돌아가기</a>
+  </header>
+  <main>
+    <h1>Llama 3.1 8B? 5000만 RoPE theta, 벤치마크는 뻥카다. 등촌동 유흥 정보랑 뭐가 달라?</h1>
+    <article>
+      <p>아, 진짜 요즘 Llama 3.1 8B 얘길 들으면 속에서 천불이 난다. 벤치마크 점수 좀 잘 나왔다고 다들 난리인데, 실제 필드에서 돌려보면 답답해 죽을 지경이라고. 특히 그 RoPE theta를 50만에서 5천만으로 늘렸다고 장문 컨텍스트 킹왕짱인 줄 아는 사람들 보면 뒷목 잡는다니까. 겉만 번지르르한 건 딱 등촌동 유흥 정보 찌라시랑 뭐가 달라?</p>
+<p><IMAGE placement="hero" alt="데이터 분석 그래프와 LLM 토큰 시퀀스 시각화" computer_monitor, graph, data_analysis, code, (llm_token_sequence:1.2), abstract_visual, digital_art, blue_light, terminal, (neural_network_visual:1.3), complex_algorithm, futuristic_ui, glowing_lines, dark_background, data_stream, intricate_details, tech_background, information_overload, cyber_theme, programming, deep_learning, ai_concept, (attention_pattern_visualization:1.2), perplexity_graph, ropetheta_visual></p>
+<p>## 5000만 RoPE theta, 그 겉만 번지르르한 숫자</p>
+<p>솔직히 2024년 5월쯤에 Llama 3.1 8B 발표하면서 RoPE theta를 5천만으로 올렸다고 했을 때, 다들 와~ 했다고. Perplexity 수치도 단기 컨텍스트에서는 분명 개선된 것처럼 보였으니까. 근데 웃긴 건, 특정 벤치마크 세트, 특히 100k 토큰 이하에서는 그럴싸하게 나오는데, 200k 토큰 넘어가면서부터는 슬슬 삐걱거리기 시작하더라고.</p>
+<p>이게 마치 등촌동 유흥 정보 중에 "가성비 최고, 물 좋음!" 이런 거 보고 찾아갔는데, 막상 가보면 사진이랑 딴판인 거랑 똑같다니까. 겉으로만 그럴싸하게 포장해놓고 실속은 없는 거지.</p>
+<p>## 장문 컨텍스트의 배신: 어텐션 패턴 널뛰기</p>
+<p>진짜 문제는 300k 토큰 이상으로 컨텍스트가 길어질 때 터졌어. 특정 토큰 구간, 예를 들어 350k에서 420k 사이에서 어텐션 헤드 몇 개가 아예 제 기능을 못 하는 현상이 관찰됐거든. `long-context attention drift` 같은 키워드로 당시 커뮤니티에서 난리 났던 거 기억하냐? Perplexity 수치도 이 구간에서 급격하게 튀어 오르는 걸 볼 수 있었다고.</p>
+<p>분명 RoPE embedding extrapolation 쪽에서 문제가 발생한 건데, 벤치마크 스코어만 보고 '장문 컨텍스트 처리 능력 대폭 향상!' 이 지랄 떠는 거 보면 진짜 속이 뒤집힌다. 특정 `rope embedding extrapolation error` 케이스에선 아예 중요한 정보 토큰을 무시해버리는 현상까지 나타났어. 이건 단순한 성능 저하가 아니라, 모델의 신뢰성 자체를 갉아먹는 거라고. 8B 모델에서 이런 `llama3.1 rope_theta scaling` 이슈가 터지면, 결국 리소스만 더 잡아먹는 꼴 되는 거거든.</p>
+<p>## 벤치마크는 뻥카, 결국 직접 써봐야 안다</p>
+<p>결론은 그거야. 남들이 좋다고 떠들어봤자, 네가 직접 돌려보고 네 환경에서 제대로 작동하는지 확인해야 한다는 거. `2024 llm long context issues` 같은 거 찾아보면 이런 류의 불평이 한두 개가 아니라고. 벤치마크 점수가 실제 추론 품질과 반비례하는 현상은 이제 지겹다, 지겨워.</p>
+<p>괜히 남들 말에 혹해서 시간 낭비, 돈 낭비 하지 말고. 특히 이런 니치한 모델의 `8b llama performance drift` 같은 건 직접 체감해보지 않으면 모르는 법이다. 내 말 듣고 손해 볼 일은 없을 테니, 혹시라도 이거 갖고 삽질할까 봐 노파심에 하는 말이니까 흘려듣지 마라.</p>
+    </article>
+  </main>
+</body>
+</html>
