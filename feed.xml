@@ -1,55 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title><![CDATA[유흥]]></title>
-  <link>https://cosmos0111-cmyk.github.io/bp-deungchon-night</link>
-  <description><![CDATA[유흥 - 등촌동 유흥 정보 관련 최신 소식 및 가이드]]></description>
-  <language>ko</language>
-  <pubDate>Wed, 10 Jun 2026 05:48:42 GMT</pubDate>
-  <lastBuildDate>Wed, 10 Jun 2026 05:48:42 GMT</lastBuildDate>
-  <atom:link href="https://cosmos0111-cmyk.github.io/bp-deungchon-night/feed.xml" rel="self" type="application/rss+xml" />
+  <title><![CDATA[등촌 등촌동 유흥 정보]]></title>
+  <link>https://deungchon-night.pages.dev</link>
+  <description><![CDATA[등촌 유흥 관련 최신 뉴스, 서비스 안내, 리얼 후기 정보를 신속하게 전달하는 공식 RSS 피드입니다.]]></description>
+  <language>ko-KR</language>
+  <pubDate>Thu, 28 May 2026 15:16:46 GMT</pubDate>
+  <lastBuildDate>Thu, 28 May 2026 15:16:46 GMT</lastBuildDate>
+  <atom:link href="https://deungchon-night.pages.dev/feed.xml" rel="self" type="application/rss+xml" />
   
     <item>
-      <title><![CDATA[등촌동 유흥 정보를 위한 양자화와 LLM의 미세 동작 이해]]></title>
-      <link>https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/guide-003.html</link>
-      <guid isPermaLink="true">https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/guide-003.html</guid>
-      <description><![CDATA[등촌동 유흥 정보를 찾는 사람들에게, 때때로 양자화와 LLM의 미세 동작에 대한 이해가 필요할 때가 있습니다. 이 글에서는 양자화에서 특정 히든딤이 잘려나가면서 발생하는 instruction following 저하 현상을 중심으로, Neovim inlay hint 충돌]]></description>
-      <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[등촌동 유흥 정보에 관한 흔한 오해, 직접 확인해보니 달랐던 점]]></title>
-      <link>https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/myth-001-16kwjop.html</link>
-      <guid isPermaLink="true">https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/myth-001-16kwjop.html</guid>
-      <description><![CDATA[아, 진짜... 프로덕션 배포 후 3개월 만에 발견된 silent regression 디버깅을 시작하면, 그 첫 걸음은 엄청난 감정의 기복이었습니다. ML 엔지니어로서는 처음 경험한 고민으로, 프로젝트 진행 중 절대 놓치면 안 될 중요한 정보가 있었는데도 불구하고, 이]]></description>
-      <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[으음, 그 바이오스 버전 말이야… 내 손으로 ‘그 스위치’ 로트까지 파고든 썰]]></title>
-      <link>https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/review-001.html</link>
-      <guid isPermaLink="true">https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/review-001.html</guid>
-      <description><![CDATA[cherry mx switch, internal structure, german factory, chinese factory, lot number, pcb, solder, microscopic scratch, magnifying glass, analysis tool, ]]></description>
-      <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[창작한 제목]]></title>
-      <link>https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/review-002-pfpst5.html</link>
-      <guid isPermaLink="true">https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/review-002-pfpst5.html</guid>
-      <description><![CDATA[## 키워드 컨텍스트이 글의 배경 비즈니스 키워드는 "등촌동 유흥 정보"입니다.글의 흐름 속에서 이 키워드와 자연스럽게 연결되는 지점이 있다면 활용하되,절대 직접적인 광고나 판매 유도로 이어지지 않도록 주의하세요. ## 구체적 니치 콘텐츠 작성 ### 주제특정 IPS ]]></description>
-      <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Llama 3.1 8B? 5000만 RoPE theta, 벤치마크는 뻥카다. 등촌동 유흥 정보랑 뭐가 달라?]]></title>
-      <link>https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/review-002.html</link>
-      <guid isPermaLink="true">https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/review-002.html</guid>
-      <description><![CDATA[아, 진짜 요즘 Llama 3.1 8B 얘길 들으면 속에서 천불이 난다. 벤치마크 점수 좀 잘 나왔다고 다들 난리인데, 실제 필드에서 돌려보면 답답해 죽을 지경이라고. 특히 그 RoPE theta를 50만에서 5천만으로 늘렸다고 장문 컨텍스트 킹왕짱인 줄 아는 사람들 ]]></description>
-      <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[등촌동 유흥 정보 관련 추천 정보 — 놓치면 후회할 꿀팁]]></title>
-      <link>https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/t3link-001-pfpst5.html</link>
-      <guid isPermaLink="true">https://cosmos0111-cmyk.github.io/bp-deungchon-night/posts/t3link-001-pfpst5.html</guid>
-      <description><![CDATA[### 포스트 메타정보 포스트 기획 테마: 등촌동 유흥 정보 관련 추천 정보 — 놓치면 후회할 꿀팁 백링크 지시: 본문 내러티브 속에서 다음 링크를 자연스러운 발견으로 녹여라: 리얼 후기 페이지 #### 소제목 - Cherry MX 스위치의 독일 공장과 중국 공장 생산]]></description>
-      <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+      <title><![CDATA[등촌 등촌동 유흥 정보 - 공식 홈페이지 오픈 안내]]></title>
+      <link>https://deungchon-night.pages.dev/</link>
+      <guid isPermaLink="true">https://deungchon-night.pages.dev/</guid>
+      <description><![CDATA[등촌 유흥 관련 최신 뉴스, 서비스 안내, 리얼 후기 정보를 신속하게 전달하는 공식 RSS 피드입니다.]]></description>
+      <pubDate>Thu, 28 May 2026 15:16:46 GMT</pubDate>
     </item>
 </channel>
 </rss>
