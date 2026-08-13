@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · deungchon-night</title>
+  <meta name="description" content="deungchon-night에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://deungchon-club-review.hardcoreroom.com/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ /* Base Reset & Typography */
+ :root {
+ --bg-color: #FDFCF7;
+ --text-color: #2C2623;
+ --text-muted: #6E655F;
+ --primary-color: #8C6A5C;
+ --border-color: #EBE6DD;
+ --hairline-color: #D6CFC4;
+ --accent-color: #A64B2A;
+ --card-bg: #FFFFFF;
+ --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+ --font-serif: "Times New Roman", "Nanum Myeongjo", serif;
+ }
+
+ * {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ }
+
+ body {
+ background-color: var(--bg-color);
+ color: var(--text-color);
+ font-family: var(--font-sans);
+ line-height: 1.65;
+ -webkit-font-smoothing: antialiased;
+ letter-spacing: -0.02em;
+ }
+
+ /* Layout Container */
+ .container {
+ max-width: 1100px;
+ margin: 0 auto;
+ padding: 0 24px;
+ }
+
+ /* Hairline Rules */
+ .hairline-top {
+ border-top: 1px solid var(--hairline-color);
+ }
+ .hairline-bottom {
+ border-bottom: 1px solid var(--hairline-color);
+ }
+
+ /* Header Navigation */
+ .header-wrap {
+ padding: 20px 0;
+ background-color: var(--bg-color);
+ }
+
+ .header-inner {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .logo {
+ font-family: var(--font-serif);
+ font-weight: 700;
+ font-size: 1.4rem;
+ letter-spacing: -0.05em;
+ text-transform: uppercase;
+ color: var(--text-color);
+ text-decoration: none;
+ }
+
+ .nav-links {
+ display: flex;
+ gap: 24px;
+ align-items: center;
+ }
+
+ .nav-links a {
+ font-size: 0.9rem;
+ color: var(--text-muted);
+ text-decoration: none;
+ font-weight: 500;
+ transition: color 0.2s ease;
+ }
+
+ .nav-links a:hover, .nav-links a.active {
+ color: var(--text-color);
+ }
+
+ /* Mobile Menu Button (Hamburger) */
+ .menu-toggle {
+ display: none;
+ background: none;
+ border: none;
+ cursor: pointer;
+ padding: 4px;
+ }
+
+ .menu-toggle span {
+ display: block;
+ width: 20px;
+ height: 2px;
+ background-color: var(--text-color);
+ margin: 4px 0;
+ }
+
+ /* Hero / Editorial Header */
+ .hero-section {
+ padding: 80px 0 60px 0;
+ text-align: center;
+ }
+
+ .category-tag {
+ font-family: var(--font-serif);
+ font-style: italic;
+ font-size: 1.1rem;
+ color: var(--primary-color);
+ margin-bottom: 16px;
+ display: inline-block;
+ }
+
+ .hero-title {
+ font-family: var(--font-serif);
+ font-size: 3rem;
+ line-height: 1.2;
+ font-weight: 400;
+ margin-bottom: 24px;
+ letter-spacing: -0.03em;
+ }
+
+ .hero-subtitle {
+ font-size: 1.15rem;
+ color: var(--text-muted);
+ max-width: 700px;
+ margin: 0 auto 40px auto;
+ line-height: 1.7;
+ }
+
+ .meta-grid {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ border-top: 1px solid var(--border-color);
+ border-bottom: 1px solid var(--border-color);
+ padding: 16px 0;
+ max-width: 600px;
+ margin: 0 auto;
+ text-align: center;
+ }
+
+ .meta-item span {
+ display: block;
+ font-size: 0.75rem;
+ text-transform: uppercase;
+ color: var(--text-muted);
+ letter-spacing: 0.05em;
+ margin-bottom: 4px;
+ }
+
+ .meta-item p {
+ font-size: 0.95rem;
+ font-weight: 600;
+ }
+
+ /* Main Content Grid */
+ .content-grid {
+ display: grid;
+ grid-template-columns: 2fr 1fr;
+ gap: 60px;
+ padding: 60px 0;
+ }
+
+ .main-column {
+ display: flex;
+ flex-direction: column;
+ gap: 50px;
+ }
+
+ .side-column {
+ display: flex;
+ flex-direction: column;
+ gap: 40px;
+ }
+
+ /* Typography Elements */
+ .section-title {
+ font-family: var(--font-serif);
+ font-size: 1.8rem;
+ font-weight: 400;
+ margin-bottom: 24px;
+ padding-bottom: 12px;
+ border-bottom: 1px solid var(--border-color);
+ }
+
+ p.lead {
+ font-size: 1.1rem;
+ line-height: 1.8;
+ color: var(--text-color);
+ margin-bottom: 20px;
+ }
+
+ p.body-text {
+ font-size: 0.98rem;
+ color: var(--text-muted);
+ margin-bottom: 20px;
+ text-align: justify;
+ }
+
+ /* Data Ledger Table Style */
+ .ledger-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 24px 0;
+ }
+
+ .ledger-table th {
+ text-align: left;
+ padding: 12px 8px;
+ font-size: 0.8rem;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ color: var(--text-muted);
+ border-bottom: 2px solid var(--text-color);
+ }
+
+ .ledger-table td {
+ padding: 16px 8px;
+ font-size: 0.95rem;
+ border-bottom: 1px solid var(--border-color);
+ }
+
+ .ledger-table tr:hover td {
+ background-color: rgba(140, 106, 92, 0.03);
+ }
+
+ /* Card / Box Styles */
+ .info-card {
+ background-color: var(--card-bg);
+ border: 1px solid var(--border-color);
+ padding: 30px;
+ border-radius: 4px;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+ }
+
+ .info-card h4 {
+ font-family: var(--font-serif);
+ font-size: 1.25rem;
+ margin-bottom: 12px;
+ color: var(--text-color);
+ }
+
+ .info-card ul {
+ list-style-type: none;
+ padding: 0;
+ }
+
+ .info-card li {
+ font-size: 0.9rem;
+ color: var(--text-muted);
+ margin-bottom: 12px;
+ position: relative;
+ padding-left: 16px;
+ }
+
+ .info-card li::before {
+ content: "•";
+ position: absolute;
+ left: 0;
+ color: var(--primary-color);
+ }
+
+ /* FAQ Accordion Layout */
+ .faq-item {
+ margin-bottom: 24px;
+ padding-bottom: 20px;
+ border-bottom: 1px solid var(--border-color);
+ }
+
+ .faq-question {
+ font-size: 1.05rem;
+ font-weight: 600;
+ margin-bottom: 10px;
+ color: var(--text-color);
+ display: flex;
+ align-items: flex-start;
+ }
+
+ .faq-question span {
+ color: var(--accent-color);
+ margin-right: 8px;
+ font-weight: 700;
+ }
+
+ .faq-answer {
+ font-size: 0.95rem;
+ color: var(--text-muted);
+ line-height: 1.6;
+ padding-left: 24px;
+ }
+
+ /* Footer */
+ footer {
+ background-color: #2C2623;
+ color: #EBE6DD;
+ padding: 60px 0;
+ font-size: 0.85rem;
+ }
+
+ .footer-grid {
+ display: grid;
+ grid-template-columns: 2fr 1fr;
+ gap: 40px;
+ margin-bottom: 40px;
+ }
+
+ .footer-logo {
+ font-family: var(--font-serif);
+ font-size: 1.3rem;
+ font-weight: 700;
+ color: #FFFFFF;
+ margin-bottom: 16px;
+ }
+
+ .footer-text {
+ color: #A39D95;
+ line-height: 1.6;
+ max-width: 500px;
+ }
+
+ .footer-links {
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+ }
+
+ .footer-links a {
+ color: #A39D95;
+ text-decoration: none;
+ transition: color 0.2s ease;
+ }
+
+ .footer-links a:hover {
+ color: #FFFFFF;
+ }
+
+ .copyright-bar {
+ border-top: 1px solid #423B38;
+ padding-top: 24px;
+ text-align: center;
+ color: #8C857D;
+ font-size: 0.8rem;
+ }
+
+ /* Responsive Design */
+ @media (max-width: 768px) {
+ .content-grid {
+ grid-template-columns: 1fr;
+ gap: 40px;
+ }
+
+ .hero-title {
+ font-size: 2.2rem;
+ }
+
+ .nav-links {
+ display: none; /* In production, toggled by hamburger menu */
+ }
+
+ .menu-toggle {
+ display: block;
+ }
+
+ .footer-grid {
+ grid-template-columns: 1fr;
+ gap: 30px;
+ }
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (2/2) · deungchon-night">
+  <meta property="og:description" content="deungchon-night에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://deungchon-club-review.hardcoreroom.com/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header class="header-wrap hairline-bottom">
+ <div class="container header-inner">
+ <a href="/" class="logo">DEUNGCHON LEDGER</a>
+ <nav class="nav-links">
+ <a href="/" class="active">상권 정보</a>
+ <a href="#industry-analysis">업종별 분석</a>
+ <a href="#transparency-guide">투명성 가이드</a>
+ <a href="#faq">자주 묻는 질문</a>
+ </nav>
+ <button class="menu-toggle" aria-label="메뉴 열기">
+ <span></span>
+ <span></span>
+ <span></span>
+ </button>
+ </div>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 34개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0009.html">등촌동 유흥 정보 기반 셔츠룸 사이트 활용 가이드</a>
+        <p class="post-item__summary">낯선 지역에서 저녁 시간을 보내기 위해 등촌동 유흥 정보를 검색하다 보면 수많은 광고성 글에 직면하게 됩니다. 실제 경험이 없는 상태에서 단순히 검색 결과 상단에 노출된 곳을 무작정 방문하는 것은 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0023.html">등촌동 유흥 정보를 통해 배우는 공덕 셔츠룸 추천정보 예약 요령</a>
+        <p class="post-item__summary">등촌동 유흥 정보와 관련된 일반적인 시장 흐름을 살펴보면 많은 이들이 예약을 시도하다가 실패하는 지점이 명확합니다. 가장 흔한 실수는 매장의 운영 방침이나 회원제 여부를 사전에 파악하지 않고 무작정</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0024.html">등촌동 유흥 정보 확인 체크리스트로 살피는 연남 유흥 추천정보 가이드</a>
+        <p class="post-item__summary">등촌동 유흥 정보의 신뢰도를 파악하기 위해 활용하는 체크리스트 방식을 연남 지역에도 적용해 보고자 합니다. 검증된 정보를 얻기 위해서는 접근성과 시설의 위치를 우선적으로 확인하는 것이 좋습니다. 지</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0025.html">등촌동 유흥 정보: 마곡 가라오케 초행자를 위한 꿀팁</a>
+        <p class="post-item__summary">서울 마곡 지역에서 처음으로 가라오케를 방문하는 분들이라면, 어디서부터 어떻게 시작해야 할지 막막하게 느껴질 수 있습니다. 많은 사람들이 마곡 가라오케 추천정보를 찾지만, 실제로 방문했을 때 예상치</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0026.html">등촌동 유흥 정보: 마곡 유흥, 시간대 선택이 중요할까?</a>
+        <p class="post-item__summary">마곡 유흥을 즐기고자 할 때, 많은 사람들이 시간대 선택의 중요성에 대해 간과하는 경향이 있습니다. 흔히 늦은 밤에만 유흥을 즐길 수 있다고 생각하지만, 마곡 지역에서는 시간대에 따라 다양한 분위기</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0027.html">등촌동 유흥 정보: 합정 노래방, 인원 구성별 맞춤 추천</a>
+        <p class="post-item__summary">합정에서 노래방을 찾고 있다면, 만족스러운 경험을 위해 몇 가지 충족 조건을 고려하는 것이 좋습니다. 가장 먼저 고려해야 할 것은 바로 함께 방문하는 인원수입니다. 적절한 규모의 노래방을 선택하는 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0028.html">등촌동 유흥 정보와 연남 클럽 추천정보를 활용한 슬기로운 밤 문화 선택법</a>
+        <p class="post-item__summary">주말 밤을 더욱 특별하게 보내고 싶다는 고민을 해본 적이 있으신가요? 많은 이들이 등촌동 유흥 정보 검색을 시작으로 자신만의 놀이 공간을 찾기 위해 분주하게 움직입니다. 하지만 수많은 업체 중에서 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0029.html">등촌동 유흥 정보 기반 합정 셔츠룸 추천정보 및 올바른 선택 가이드</a>
+        <p class="post-item__summary">등촌동 유흥 정보 탐색을 시작으로 새로운 장소를 찾을 때는 객관적인 검증이 무엇보다 중요합니다. 단순히 온라인에 노출된 광고성 문구만을 믿기보다는 실질적인 운영 체계를 확인하는 것이 우선입니다. 특</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0030.html">등촌동 유흥 정보 대조를 통한 공덕 가라오케 추천정보 분석</a>
+        <p class="post-item__summary">등촌동 유흥 정보를 살펴보다 보면 자연스럽게 다른 지역의 가라오케 운영 방식을 대조하게 됩니다. 공덕 지역 내의 가라오케를 비교할 때는 크게 정찰제 시스템을 운영하는 곳과 개별 견적을 산출하는 두 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0031.html">등촌동 유흥 정보 기반 상수 마사지 추천정보 이용 시 주의점</a>
+        <p class="post-item__summary">등촌동 유흥 정보와 관련하여 마사지 업소를 찾는 분들이 의외로 많이 겪는 실패 사례가 있습니다. 바로 예약 절차를 간과하거나 방문 직전까지 세부 사항을 확인하지 않아 현장에서 당황하는 경우입니다. </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0032.html">등촌동 유흥 정보 활용하여 망원 노래방 추천정보 검증하기</a>
+        <p class="post-item__summary">등촌동 유흥 정보를 탐색하며 주변 지역으로 시야를 넓히는 분들이 많아지고 있습니다. 특히 망원 지역은 독특한 분위기의 노래방이 많아 위치와 접근성을 최우선으로 고려해야 합니다. 대중교통 이용이 편리</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0033.html">등촌동 유흥 정보와 비교하는 홍대 노래방 추천정보의 특징</a>
+        <p class="post-item__summary">낯선 지역에서 저녁 시간을 보내기 위해 급하게 장소를 찾다가 엉뚱한 곳을 방문해 낭패를 본 경험은 누구에게나 있을 법한 일입니다. 특히 등촌동 유흥 정보 관련 키워드로 검색했을 때 노출되는 정보들만</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260731-0005.html">등촌동 유흥 정보 안내</a>
+        <p class="post-item__summary">등촌동은 서울 강서구에 위치한 지역으로, 주변 상권이 고루 발달해 있어 다양한 유흥 업종이 밀집해 있습니다. 이 지역을 처음 방문하는 분들이나 현지 정보를 미리 파악하고자 하는 분들을 위해, 등촌동</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260731-0015.html">등촌동 유흥 정보 탐색과 주변 지역 연계 가이드</a>
+        <p class="post-item__summary">등촌동 일대의 유흥 정보를 확인하려는 이용자들은 지역 내 다양한 시설과 서비스 환경을 종합적으로 검토하는 경향이 있습니다. 등촌동은 교통 편의성이 뛰어나고 주변 상권과의 접근성이 양호하여 여가를 즐</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
